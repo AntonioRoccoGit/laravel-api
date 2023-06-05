@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\projects\StoreDataRequest;
 use App\Models\Project;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -36,14 +38,21 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreDataRequest $request)
     {
-        $data = $request->all();
-        $project = new Project();
-        $project->slug = Str::slug($data['title'], '-');
-        $project->fill($data);
-        $project->save();
-        return redirect()->route('admin.projects.index');
+        try {
+            $data = $request->validated();
+            $project = new Project();
+            $project->slug = Str::slug($data['title'], '-');
+            $project->fill($data);
+            $project->save();
+            return redirect()->route('admin.projects.index');
+        } catch (Exception $err) {
+            if ($err->getCode() === '23000') {
+                // to do
+                var_dump('To DO');
+            }
+        }
     }
 
     /**
