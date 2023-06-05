@@ -15,6 +15,12 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
+
+    {{-- FONTAWESOME --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <!-- Usando Vite -->
     @vite(['resources/js/app.js'])
 </head>
@@ -94,7 +100,38 @@
         </nav>
 
         <main class="">
-            @yield('content')
+            <div class="mc-wrapper d-flex">
+
+                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse ">
+                    <div class="container">
+
+                        <div class="position-sticky pt-3">
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    asasas
+                                    <a class="nav-link text-white  rounded-2 {{ Route::currentRouteName() == 'admin.dashboard' ? 'bg-secondary' : '' }}"
+                                        href="{{ route('admin.dashboard') }}">
+                                        <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Dashboard
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    saasassa
+                                    <a class="nav-link text-white rounded-2 {{ Route::currentRouteName() == 'admin.projects.index' ? 'bg-secondary' : '' }}"
+                                        href="{{ route('admin.projects.index') }}">
+                                        <i class="fa-regular fa-folder-open"></i> Post
+                                    </a>
+                                </li>
+                            </ul>
+
+
+                        </div>
+                    </div>
+                </nav>
+
+                <div class="container ms_overflow">
+                    @yield('content')
+                </div>
+            </div>
         </main>
     </div>
 </body>
