@@ -1,1 +1,7 @@
-@import '~bootstrap/scss/bootstrap'
+@use './partials/dashboard_layout';
+@use './partials/variables' as *;
+@import '~bootstrap/scss/bootstrap';
+
+.ms_header {
+    height: $header_height;
+}

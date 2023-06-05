@@ -1,0 +1,5 @@
+@use './variables' as *;
+
+.mc-wrapper {
+    height: calc(100vh - $header_height);
+}
