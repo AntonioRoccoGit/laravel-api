@@ -9,6 +9,7 @@
                     <th scope="col">Titolo</th>
                     <th scope="col">Descrizione</th>
                     <th scope="col">Ispeziona/Modifica</th>
+                    <th scope="col">Elimina
                 </tr>
             </thead>
             <tbody>
@@ -28,6 +29,14 @@
                                 </a>
 
                             </div>
+                        </td>
+                        <td>
+                            <form action="{{ route('admin.projects.destroy', $proj->slug) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+
+                                <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
