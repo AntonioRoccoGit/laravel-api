@@ -108,17 +108,21 @@
                         <div class="position-sticky pt-3">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    asasas
                                     <a class="nav-link text-white  rounded-2 {{ Route::currentRouteName() == 'admin.dashboard' ? 'bg-secondary' : '' }}"
                                         href="{{ route('admin.dashboard') }}">
                                         <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Dashboard
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    saasassa
                                     <a class="nav-link text-white rounded-2 {{ Route::currentRouteName() == 'admin.projects.index' ? 'bg-secondary' : '' }}"
                                         href="{{ route('admin.projects.index') }}">
                                         <i class="fa-regular fa-folder-open"></i> Repository
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white rounded-2 {{ Route::currentRouteName() == 'admin.projects.create' ? 'bg-secondary' : '' }}"
+                                        href="{{ route('admin.projects.create') }}">
+                                        <i class="fa-solid fa-plus"></i> Crea repository
                                     </a>
                                 </li>
                             </ul>
