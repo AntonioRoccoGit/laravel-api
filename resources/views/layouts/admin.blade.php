@@ -99,8 +99,39 @@
             </div>
         </nav>
 
-        <main>
-            @yield('content')
+        <main class="">
+            <div class="mc-wrapper d-flex">
+
+                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse ">
+                    <div class="container">
+
+                        <div class="position-sticky pt-3">
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    asasas
+                                    <a class="nav-link text-white  rounded-2 {{ Route::currentRouteName() == 'admin.dashboard' ? 'bg-secondary' : '' }}"
+                                        href="{{ route('admin.dashboard') }}">
+                                        <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Dashboard
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    saasassa
+                                    <a class="nav-link text-white rounded-2 {{ Route::currentRouteName() == 'admin.projects.index' ? 'bg-secondary' : '' }}"
+                                        href="{{ route('admin.projects.index') }}">
+                                        <i class="fa-regular fa-folder-open"></i> Repository
+                                    </a>
+                                </li>
+                            </ul>
+
+
+                        </div>
+                    </div>
+                </nav>
+
+                <div class="container ms_overflow">
+                    @yield('content')
+                </div>
+            </div>
         </main>
     </div>
 </body>

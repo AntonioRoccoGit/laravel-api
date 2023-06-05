@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
     <div class="container mt-4">
 
@@ -24,7 +24,7 @@
                                 <a class="btn btn-success" href="{{ route('admin.projects.show', $proj->slug) }}">
                                     <i class="fa-solid fa-eye"></i>
                                 </a>
-                                <a class="btn btn-warning" href="">
+                                <a class="btn btn-warning" href="{{ route('admin.projects.edit', $proj->slug) }}">
                                     <i class="fa-solid fa-glasses"></i>
                                 </a>
 
