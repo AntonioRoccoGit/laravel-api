@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\projects\StoreDataRequest;
+use App\Http\Requests\projects\UpdateDataRequest;
 use App\Models\Project;
 use Exception;
 use Illuminate\Http\Request;
@@ -84,9 +85,9 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Project $project)
+    public function update(UpdateDataRequest $request, Project $project)
     {
-        $data = $request->all();
+        $data = $request->validated();
         $project->slug = Str::slug($data['title'], '-');
         $project->update($data);
         return redirect()->route('admin.projects.show', compact('project'))->with('message', "'{$project->title}' è stato modificato con successo");
