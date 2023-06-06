@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-    @include('partials.error-message')
+    @include('partials.session-message')
     <div class="container mt-4">
         <table class="table table-dark align-middle rounded-2">
             <thead>
@@ -35,7 +35,8 @@
                                 @csrf
                                 @method('DELETE')
 
-                                <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
+                                <button type="submit" projects-title="{{ $proj->title }}"
+                                    class="btn btn-danger ms_delete_btn"><i class="fa-solid fa-trash-can"></i></button>
                             </form>
                         </td>
                     </tr>
@@ -43,5 +44,7 @@
 
             </tbody>
         </table>
+        @include('partials.delete_modal')
+
     </div>
 @endsection

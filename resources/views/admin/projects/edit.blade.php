@@ -40,8 +40,16 @@
                 <a href="{{ route('admin.projects.index') }}" class="btn btn-warning"><i
                         class="fa-solid fa-arrow-left"></i></a>
                 <button type="submit" class="btn btn-success"><i class="fa-solid fa-check"></i></button>
+                <form action="{{ route('admin.projects.destroy', $project->slug) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+
+                    <button type="submit" projects-title="{{ $project->title }}" class="btn btn-danger ms_delete_btn"><i
+                            class="fa-solid fa-trash-can"></i></button>
+                </form>
             </div>
 
         </form>
+        @include('partials.delete_modal')
     </div>
 @endsection

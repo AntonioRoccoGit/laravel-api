@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    @include('partials.error-message')
+    @include('partials.session-message')
 
     <div class="container d-flex align-items-center justify-content-center h-100 w-100">
 
@@ -14,12 +14,7 @@
 
                     <a href="{{ route('admin.projects.index') }}" class="btn btn-warning"><i
                             class="fa-solid fa-arrow-left"></i></a>
-                    <form class="ms-2" action="{{ route('admin.projects.destroy', $project->slug) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
 
-                        <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
-                    </form>
                 </div>
             </div>
         </div>
