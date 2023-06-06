@@ -42,11 +42,11 @@ class ProjectController extends Controller
     {
         try {
             $data = $request->validated();
+            $data['slug'] = Str::slug($data['title'], '-');
             $project = new Project();
-            $project->slug = Str::slug($data['title'], '-');
             $project->fill($data);
             $project->save();
-            return redirect()->route('admin.projects.index');
+            return redirect()->route('admin.projects.index')->with('message', "'{$project->title}' è stato creato");
         } catch (Exception $err) {
             if ($err->getCode() === '23000') {
                 // to do
@@ -89,7 +89,7 @@ class ProjectController extends Controller
         $data = $request->all();
         $project->slug = Str::slug($data['title'], '-');
         $project->update($data);
-        return redirect()->route('admin.projects.show', compact('project'));
+        return redirect()->route('admin.projects.show', compact('project'))->with('message', "'{$project->title}' è stato modificato con successo");
     }
 
     /**
@@ -101,6 +101,6 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         $project->delete();
-        return redirect()->route('admin.projects.index');
+        return redirect()->route('admin.projects.index')->with('message', "'{$project->title}' è stato eliminato");
     }
 }

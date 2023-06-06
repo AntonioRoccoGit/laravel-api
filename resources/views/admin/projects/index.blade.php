@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
+    @include('partials.error-message')
     <div class="container mt-4">
-
         <table class="table table-dark align-middle rounded-2">
             <thead>
                 <tr>

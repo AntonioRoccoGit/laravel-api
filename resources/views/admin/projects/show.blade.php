@@ -1,6 +1,8 @@
 @extends('layouts.admin')
 
 @section('content')
+    @include('partials.error-message')
+
     <div class="container d-flex align-items-center justify-content-center h-100 w-100">
 
         <div class="card w-50">
