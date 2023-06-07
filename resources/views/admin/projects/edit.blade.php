@@ -17,7 +17,7 @@
                 @enderror
             </div>
             <div class="mb-3">
-                <select class="form-select" aria-label="Default select example" name="type_id" id="type_id">
+                <select class="form-select @error('type_id') is-invalid @enderror" aria-label="Default select example" name="type_id" id="type_id">
                     <option selected>Seleziona una categoria</option>
                     @foreach ($types as $type)
                     <option @selected($type->title === $project->type?->title) value="{{$type->id}}">{{$type->title}}</option>
@@ -25,6 +25,11 @@
                     @endforeach
                    
                 </select>
+                @error('type_id')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
             </div>
            
             <div class="mb-3">
