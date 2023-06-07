@@ -9,6 +9,11 @@
             <div class="card-body">
                 <h5 class="card-title">{{ $project->title }}</h5>
                 <h6 class="card-subtitle mb-2 text-body-secondary">Url: {{ $project->slug }}</h6>
+                @if ($project->type)
+                <h6 class="card-subtitle mb-2 text-body-secondary">Categoria: {{ $project->type->title }}</h6>
+                @else 
+                <h6 class="card-subtitle mb-2 text-body-secondary">Nessuna categoria</h6>
+                @endif
                 <p class="card-text">{{ $project->description }}</p>
                 <div class="d-flex justify-content-end">
 
