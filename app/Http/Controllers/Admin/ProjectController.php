@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\projects\StoreDataRequest;
 use App\Http\Requests\projects\UpdateDataRequest;
 use App\Models\Project;
+use App\Models\Type;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -75,7 +76,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('admin.projects.edit', compact('project'));
+        $types = Type::all();
+        return view('admin.projects.edit', compact('project','types'));
     }
 
     /**
@@ -88,7 +90,7 @@ class ProjectController extends Controller
     public function update(UpdateDataRequest $request, Project $project)
     {
         $data = $request->validated();
-        $project->slug = Str::slug($data['title'], '-');
+        $data['slug'] = Str::slug($data['title'], '-');
         $project->update($data);
         return redirect()->route('admin.projects.show', compact('project'))->with('message', "'{$project->title}' è stato modificato con successo");
     }

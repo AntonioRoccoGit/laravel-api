@@ -7,9 +7,10 @@
                 <tr>
                     <th scope="col">Id</th>
                     <th scope="col">Titolo</th>
+                    <th scope="col">Categoria</th>
                     <th scope="col">Descrizione</th>
                     <th scope="col">Ispeziona/Modifica</th>
-                    <th scope="col">Elimina
+                    <th scope="col">Elimina</th>
                 </tr>
             </thead>
             <tbody>
@@ -17,6 +18,7 @@
                     <tr style="height: 80px">
                         <th scope="row">{{ $proj->id }}</th>
                         <td>{{ $proj->title }}</td>
+                        <td>{{ $proj->type?->title }}</td>
                         <td>{{ $proj->description }}</td>
                         <td>
                             <div class="btn-group justify-content-center w-100">

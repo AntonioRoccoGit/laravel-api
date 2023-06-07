@@ -17,6 +17,17 @@
                 @enderror
             </div>
             <div class="mb-3">
+                <select class="form-select" aria-label="Default select example" name="type_id" id="type_id">
+                    <option selected>Seleziona una categoria</option>
+                    @foreach ($types as $type)
+                    <option @selected($type->title === $project->type?->title) value="{{$type->id}}">{{$type->title}}</option>
+                        
+                    @endforeach
+                   
+                </select>
+            </div>
+           
+            <div class="mb-3">
                 <label for="description" class="form-label">Descrizione</label>
                 <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description"> {{ old('description', $project->description) }} </textarea>
                 @error('description')
@@ -40,15 +51,15 @@
                 <a href="{{ route('admin.projects.index') }}" class="btn btn-warning"><i
                         class="fa-solid fa-arrow-left"></i></a>
                 <button type="submit" class="btn btn-success"><i class="fa-solid fa-check"></i></button>
-                <form action="{{ route('admin.projects.destroy', $project->slug) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-
-                    <button type="submit" projects-title="{{ $project->title }}" class="btn btn-danger ms_delete_btn"><i
-                            class="fa-solid fa-trash-can"></i></button>
-                </form>
             </div>
+            
+        </form>
+        <form action="{{ route('admin.projects.destroy', $project->slug) }}" method="POST">
+            @csrf
+            @method('DELETE')
 
+            <button type="submit" projects-title="{{ $project->title }}" class="btn btn-danger ms_delete_btn"><i
+                    class="fa-solid fa-trash-can"></i></button>
         </form>
         @include('partials.delete_modal')
     </div>
