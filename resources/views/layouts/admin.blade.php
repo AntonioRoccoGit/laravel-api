@@ -119,10 +119,16 @@
                                         <i class="fa-regular fa-folder-open"></i> Repository
                                     </a>
                                 </li>
-                                <li class="nav-item">
+                                <li class="nav-item ps-4">
                                     <a class="nav-link text-white rounded-2 {{ Route::currentRouteName() == 'admin.projects.create' ? 'bg-secondary' : '' }}"
                                         href="{{ route('admin.projects.create') }}">
                                         <i class="fa-solid fa-plus"></i> Crea repository
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white rounded-2 {{ Route::currentRouteName() == 'admin.types.index' ? 'bg-secondary' : '' }}"
+                                        href="{{ route('admin.types.index') }}">
+                                        <i class="fa-solid fa-microchip"></i> Tecnologie Utilizzate
                                     </a>
                                 </li>
                             </ul>

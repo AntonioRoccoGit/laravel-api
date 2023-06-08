@@ -12,7 +12,6 @@ function capitalizeFirstLetter(string) {
 const btns = document.querySelectorAll('.ms_delete_btn');
 if (btns.length > 0) {
 
-    console.log(btns);
     btns.forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
@@ -20,8 +19,8 @@ if (btns.length > 0) {
                 document.getElementById('delete-modal')
             );
             console.log(deleteModal);
-            const title = btn.getAttribute("projects-title");
-            document.getElementById("modal-pizza-title").innerText = capitalizeFirstLetter(title);
+            const title = btn.getAttribute("element-title");
+            document.getElementById("modal-element-title").innerText = capitalizeFirstLetter(title);
             deleteModal.show();
             document.querySelector(".ms_btn").addEventListener("click", function () {
                 btn.parentElement.submit();
