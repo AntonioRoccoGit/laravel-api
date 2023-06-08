@@ -17,10 +17,11 @@
                 @enderror
             </div>
             <div class="mb-3">
+                <label for="type_id" class="form-label">Categoria</label>
                 <select class="form-select @error('type_id') is-invalid @enderror" aria-label="Default select example" name="type_id" id="type_id">
                     <option selected>Seleziona una categoria</option>
                     @foreach ($types as $type)
-                    <option @selected($type->title === $project->type?->title) value="{{$type->id}}">{{$type->title}}</option>
+                    <option @selected($type->id == old('type_id', $project->type?->id)) value="{{$type->id}}">{{$type->title}}</option>
                         
                     @endforeach
                    
@@ -53,18 +54,11 @@
                 @enderror
             </div>
             <div class="w-100 text-end">
-                <a href="{{ route('admin.projects.index') }}" class="btn btn-warning"><i
+                <a href="{{ url()->previous() }}" class="btn btn-warning"><i
                         class="fa-solid fa-arrow-left"></i></a>
                 <button type="submit" class="btn btn-success"><i class="fa-solid fa-check"></i></button>
             </div>
             
-        </form>
-        <form action="{{ route('admin.projects.destroy', $project->slug) }}" method="POST">
-            @csrf
-            @method('DELETE')
-
-            <button type="submit" projects-title="{{ $project->title }}" class="btn btn-danger ms_delete_btn"><i
-                    class="fa-solid fa-trash-can"></i></button>
         </form>
         @include('partials.delete_modal')
     </div>

@@ -18,7 +18,7 @@ class TypeSeeder extends Seeder
      */
     public function run()
     {
-        $array = ['JavaScript', 'Vue', 'PHP','SCSS'];
+        $array = ['Back-End', 'Front-End', 'Web-App','Mobile-App','VueComponent'];
         for ($i=0; $i < count($array); $i++) { 
            $type = new Type();
            $type->title = $array[$i];

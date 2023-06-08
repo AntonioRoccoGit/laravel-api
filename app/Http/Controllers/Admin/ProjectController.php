@@ -31,7 +31,9 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.projects.create');
+        $types = Type::all();
+
+        return view('admin.projects.create', compact('types'));
     }
 
     /**
@@ -44,6 +46,7 @@ class ProjectController extends Controller
     {
         try {
             $data = $request->validated();
+
             $data['slug'] = Str::slug($data['title'], '-');
             $project = new Project();
             $project->fill($data);
