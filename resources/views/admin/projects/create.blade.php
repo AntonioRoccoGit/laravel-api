@@ -18,7 +18,7 @@
             <div class="mb-3">
                 <label for="type_id" class="form-label">Tipologia</label>
                 <select class="form-select @error('type_id') is-invalid @enderror" aria-label="Default select example" name="type_id" id="type_id">
-                    <option selected>Seleziona una tipologia</option>
+                    <option value="null" selected>Seleziona una tipologia</option>
                     @foreach ($types as $type)
                     <option @selected($type->id == old('type_id')) value="{{$type->id}}">{{$type->title}}</option>
                         
@@ -37,7 +37,14 @@
                     <div class="mt-2 row row-cols-3">
                         @foreach ($technologies as $techno)
                         <div class="col">
-                            <input type="checkbox" name="technologies[]" id="{{$techno->name}}" value="{{$techno->id}}">
+                            <input type="checkbox" @php
+                            if (old('technologies')) {
+                                $old_arr = old('technologies');
+                            }
+                            if (old('technologies') && in_array($techno->id, $old_arr)) {
+                                echo 'checked';
+                            }
+                            @endphp name="technologies[]" id="{{$techno->name}}" value="{{$techno->id}}">
                             <label for="technologies" class="form-label">{{$techno->name}}</label>
                         </div>
                         @endforeach
