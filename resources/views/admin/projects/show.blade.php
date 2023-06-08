@@ -14,6 +14,11 @@
                 @else 
                 <h6 class="card-subtitle mb-2 text-body-secondary">Nessuna categoria</h6>
                 @endif
+                @forelse ($project->technologies as $item)
+                    {{$item->name}},
+                @empty
+                    Nessun Linguaggio selezionato
+                @endforelse
                 <p class="card-text">{{ $project->description }}</p>
                 <div class="d-flex justify-content-end">
 

@@ -7,6 +7,7 @@
                 <tr>
                     <th scope="col">Id</th>
                     <th scope="col">Titolo</th>
+                    <th scope="col">Linguaggi</th>
                     <th scope="col">Categoria</th>
                     <th scope="col">Descrizione</th>
                     <th scope="col">Ispeziona/Modifica</th>
@@ -18,6 +19,13 @@
                     <tr style="height: 80px">
                         <th scope="row">{{ $proj->id }}</th>
                         <td>{{ $proj->title }}</td>
+                        <td>
+                            @forelse ($proj->technologies as $item)
+                                 {{$item->name}},
+                            @empty
+                                  Nessun Linguaggio selezionato
+                            @endforelse
+                        </td>
                         <td>{{ $proj->type?->title }}</td>
                         <td>{{ $proj->description }}</td>
                         <td>
