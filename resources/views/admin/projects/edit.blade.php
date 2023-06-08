@@ -17,9 +17,9 @@
                 @enderror
             </div>
             <div class="mb-3">
-                <label for="type_id" class="form-label">Categoria</label>
+                <label for="type_id" class="form-label">Tipologia</label>
                 <select class="form-select @error('type_id') is-invalid @enderror" aria-label="Default select example" name="type_id" id="type_id">
-                    <option selected>Seleziona una categoria</option>
+                    <option selected>Seleziona una tipologia</option>
                     @foreach ($types as $type)
                     <option @selected($type->id == old('type_id', $project->type?->id)) value="{{$type->id}}">{{$type->title}}</option>
                         
@@ -32,10 +32,29 @@
                     </div>
                 @enderror
             </div>
+
+            <div class="mb-3 border">
+                <div class="container">
+                    <h5>Linguaggi</h5>
+                    <div class="mt-2 row row-cols-3">
+                        @foreach ($technologies as $techno)
+                        <div class="col">
+                            <input type="checkbox" name="technologies[]" id="{{$techno->name}}" value="{{$techno->id}}">
+                            <label for="technologies" class="form-label">{{$techno->name}}</label>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+                @error('technologies')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
            
             <div class="mb-3">
                 <label for="description" class="form-label">Descrizione</label>
-                <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description"> {{ old('description', $project->description) }} </textarea>
+                <textarea class="form-control @error('description') is-invalid @enderror" rows="8" id="description" name="description"> {{ old('description', $project->description) }} </textarea>
                 @error('description')
                     <div class="invalid-feedback">
                         {{ $message }}

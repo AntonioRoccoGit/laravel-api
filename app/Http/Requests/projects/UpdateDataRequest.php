@@ -35,7 +35,11 @@ class UpdateDataRequest extends FormRequest
             'type_id' => [
                 'nullable',
                 'exists:types,id'
-            ]
+            ],
+            'technologies' => [
+                'nullable',
+                'exists:technologies,id'
+            ],
         ];
     }
     public function messages()
@@ -48,7 +52,8 @@ class UpdateDataRequest extends FormRequest
             'description.min' => 'Lunghezza minima :min caratteri',
             'description.max' => 'Lunghezza massima :max caratteri',
             'sale_date.date' => 'Formato data',
-            'type_id.exists' => 'Verifica di aver inserito una categoria esistente'
+            'type_id.exists' => 'Verifica di aver inserito una categoria esistente',
+            'technologies.exists' => 'Verifica di aver inserito una categoria esistente'
         ];
     }
 }

@@ -13,7 +13,7 @@ class Project extends Model
     }
     
     public function technologies() {
-        return $this->hasMany(Technology::class);
+        return $this->belongsToMany(Technology::class, 'project_technology', 'project_id', 'technology_id');
     }
     
     protected $fillable = ['title', 'slug', 'description', 'project_last_update', 'type_id'];
