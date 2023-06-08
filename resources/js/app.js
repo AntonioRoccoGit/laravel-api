@@ -18,7 +18,6 @@ if (btns.length > 0) {
             const deleteModal = new bootstrap.Modal(
                 document.getElementById('delete-modal')
             );
-            console.log(deleteModal);
             const title = btn.getAttribute("element-title");
             document.getElementById("modal-element-title").innerText = capitalizeFirstLetter(title);
             deleteModal.show();

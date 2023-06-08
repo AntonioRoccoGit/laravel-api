@@ -102,7 +102,7 @@
         <main class="">
             <div class="mc-wrapper d-flex">
 
-                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse ">
+                <nav id="sidebarMenu" class="col-md-4 col-lg-3 d-md-block bg-dark navbar-dark sidebar collapse ">
                     <div class="container">
 
                         <div class="position-sticky pt-3">
@@ -129,6 +129,12 @@
                                     <a class="nav-link text-white rounded-2 {{ Route::currentRouteName() == 'admin.types.index' ? 'bg-secondary' : '' }}"
                                         href="{{ route('admin.types.index') }}">
                                         <i class="fa-solid fa-microchip"></i> Tecnologie Utilizzate
+                                    </a>
+                                </li>
+                                <li class="nav-item ps-4">
+                                    <a class="nav-link text-white rounded-2 {{ Route::currentRouteName() == 'admin.types.create' ? 'bg-secondary' : '' }}"
+                                        href="{{ route('admin.types.create') }}">
+                                        <i class="fa-solid fa-plus"></i> Crea Tecnologia
                                     </a>
                                 </li>
                             </ul>
