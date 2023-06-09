@@ -37,15 +37,8 @@
                     <div class="mt-2 row row-cols-3">
                         @foreach ($technologies as $techno)
                         <div class="col">
-                            <input type="checkbox" @php
-                            if (old('technologies')) {
-                                $old_arr = old('technologies');
-                            }
-                            if (old('technologies') && in_array($techno->id, $old_arr)) {
-                                echo 'checked';
-                            }
-                            @endphp name="technologies[]" id="{{$techno->name}}" value="{{$techno->id}}">
-                            <label for="technologies" class="form-label">{{$techno->name}}</label>
+                            <input type="checkbox" @checked(in_array($techno->id, old('technologies', []))) name="technologies[]" id="{{$techno->name}}" value="{{$techno->id}}">
+                            <label for="{{$techno->name}}" class="form-label">{{$techno->name}}</label>
                         </div>
                         @endforeach
                     </div>

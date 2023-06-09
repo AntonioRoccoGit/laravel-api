@@ -37,26 +37,10 @@
                 <div class="container">
                     <h5>Linguaggi</h5>
                     <div class="mt-2 row row-cols-3">
-                        {{-- gestione selezioni del check --}}
-                        @php
-                            if (old('technologies')) {
-                                $old_arr = old('technologies');
-                            } else {
-                                foreach ($project->technologies as $proj_tech) {
-                                    $proj_tech_array[] = $proj_tech->id;
-                                }
-                            }
-                            
-                        @endphp
+                       
                         @foreach ($technologies as $techno)
                         <div class="col">
-                            <input type="checkbox" @php
-                            
-                            if (old('technologies') && in_array($techno->id, $old_arr) || !old('technologies') && in_array($techno->id,  $proj_tech_array) ) {
-                                echo 'checked';
-                            }
-                            @endphp
-                            name="technologies[]" id="{{$techno->name}}" value="{{$techno->id}}">
+                            <input type="checkbox" @checked(!old('technologies')? $project->technologies->contains($techno) : in_array($techno->id, old('technologies', []))) name="technologies[]" id="{{$techno->name}}" value="{{$techno->id}}">
                             <label for="technologies" class="form-label">{{$techno->name}}</label>
                         </div>
                         @endforeach

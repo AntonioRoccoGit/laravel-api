@@ -7,8 +7,8 @@
                 <tr>
                     <th scope="col">Id</th>
                     <th scope="col">Titolo</th>
-                    <th scope="col">Linguaggi</th>
                     <th scope="col">Tipologia</th>
+                    <th scope="col">Linguaggi</th>
                     <th scope="col">Descrizione</th>
                     <th scope="col">Ispeziona/Modifica</th>
                     <th scope="col">Elimina</th>
@@ -19,14 +19,14 @@
                     <tr style="height: 80px">
                         <th scope="row">{{ $proj->id }}</th>
                         <td>{{ $proj->title }}</td>
+                        <td>{{ $proj->type?->title }}</td>
                         <td>
                             @forelse ($proj->technologies as $item)
-                                 {{$item->name}},
+                                 {{$item->name}} {{$loop->last ? '' : ','}}
                             @empty
-                                  Nessun Linguaggio selezionato
+                                  Non specificato
                             @endforelse
                         </td>
-                        <td>{{ $proj->type?->title }}</td>
                         <td>{{ $proj->description }}</td>
                         <td>
                             <div class="btn-group justify-content-center w-100">

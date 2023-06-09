@@ -29,7 +29,7 @@
     <div id="app">
 
 
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm ms_header">
+        <nav class="navbar navbar-expand-md bg-dark navbar-dark color-white shadow-sm ms_header">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
                     <div class="logo_laravel">
@@ -144,12 +144,11 @@
                     </div>
                 </nav>
 
-                <div class="container ms_overflow">
+                <div class="container ms_overflow" style="background-color: #5c5151">
                     @yield('content')
                 </div>
             </div>
         </main>
     </div>
 </body>
-
 </html>

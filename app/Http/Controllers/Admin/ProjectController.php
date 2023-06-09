@@ -54,7 +54,9 @@ class ProjectController extends Controller
             $project = new Project();
             $project->fill($data);
             $project->save();
-            $project->technologies()->attach($data['technologies']);
+            if ($request->has('technologies')) {
+                $project->technologies()->attach($data['technologies']);
+            }
 
             return redirect()->route('admin.projects.index')->with('message', "'{$project->title}' è stato creato");
         } catch (Exception $err) {
@@ -101,7 +103,9 @@ class ProjectController extends Controller
         $data = $request->validated();
         $data['slug'] = Str::slug($data['title'], '-');
         $project->update($data);
-        $project->technologies()->sync($data['technologies']);
+        if ($request->has('technologies')) {
+            $project->technologies()->sync($data['technologies']);
+        }
         return redirect()->route('admin.projects.show', compact('project'))->with('message', "'{$project->title}' è stato modificato con successo");
     }
 

@@ -8,17 +8,19 @@
         <div class="card w-50">
             <div class="card-body">
                 <h5 class="card-title">{{ $project->title }}</h5>
-                <h6 class="card-subtitle mb-2 text-body-secondary">Url: {{ $project->slug }}</h6>
                 @if ($project->type)
                 <h6 class="card-subtitle mb-2 text-body-secondary">Categoria: {{ $project->type->title }}</h6>
                 @else 
                 <h6 class="card-subtitle mb-2 text-body-secondary">Nessuna categoria</h6>
                 @endif
-                @forelse ($project->technologies as $item)
-                    {{$item->name}},
-                @empty
-                    Nessun Linguaggio selezionato
-                @endforelse
+                <p>
+                    <strong>Linguaggi: </strong>
+                    @forelse ($project->technologies as $item)
+                        {{$item->name}} {{$loop->last ? '' : ','}}
+                    @empty
+                        Nessun Linguaggio selezionato
+                    @endforelse
+                </p>
                 <p class="card-text">{{ $project->description }}</p>
                 <div class="d-flex justify-content-end">
 
