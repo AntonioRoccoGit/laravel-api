@@ -105,6 +105,8 @@ class ProjectController extends Controller
         $project->update($data);
         if ($request->has('technologies')) {
             $project->technologies()->sync($data['technologies']);
+        } else {
+            $project->technologies()->detach();
         }
         return redirect()->route('admin.projects.show', compact('project'))->with('message', "'{$project->title}' è stato modificato con successo");
     }
