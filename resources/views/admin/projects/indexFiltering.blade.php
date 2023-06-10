@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 @section('content')
     @include('partials.session-message')
-    <h2>{{old('filter_form', 'ciao')}}</h2>
     <div class="container mt-4">
         <form class="mb-4 d-flex" action="{{route('admin.projects.filter')}}" method="GET">
             @csrf

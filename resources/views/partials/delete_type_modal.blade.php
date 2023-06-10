@@ -6,7 +6,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>Sei sicuro di voler eliminare il Progetto <strong><span id="modal-element-title"> </span></strong>?</p>
+                <p><strong><span id="modal-element-title"> </span></strong> verrà eliminato anche nei progetti associati</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>

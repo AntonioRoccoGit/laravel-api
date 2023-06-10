@@ -21,8 +21,25 @@ class ProjectController extends Controller
      */
     public function index()
     {
+        $types = Type::all();
         $projects = Project::all();
-        return view('admin.projects.index', compact('projects'));
+        return view('admin.projects.index', compact('projects','types'));
+    }
+
+    public function indexFiltering(Request $request)
+    {
+        $data = $request->all();
+        $filter = $data['filter_form'];
+        $types = Type::all();
+        if ($filter != 'null') {
+
+            $projects = Project::where('type_id', '=', $data['filter_form'])->get();
+        }else {
+            $projects = Project::all();
+
+        }
+
+        return view('admin.projects.indexFiltering', compact('projects','types'));
     }
 
     /**
@@ -120,6 +137,6 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         $project->delete();
-        return redirect()->route('admin.projects.index')->with('message', "'{$project->title}' è stato eliminato");
+        return redirect()->route('admin.projects.index')->with('message', "{$project->title} è stato eliminato");
     }
 }
