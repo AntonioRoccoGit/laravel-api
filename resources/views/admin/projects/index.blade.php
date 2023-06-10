@@ -3,8 +3,9 @@
     @include('partials.session-message')
     <h2>{{old('filter_form', 'ciao')}}</h2>
     <div class="container mt-4">
-        <form class="mb-4 d-flex" action="{{route('admin.projects.filter')}}" method="GET">
+        <form class="mb-4 d-flex" action="{{route('admin.projects.filter')}}" method="POST">
             @csrf
+            @method('GET')
             <select class="form-select" name="filter_form" id="filter_form">
                 <option value="">Scegli una tipologia</option>
 

@@ -31,15 +31,13 @@ class ProjectController extends Controller
         $data = $request->all();
         $filter = $data['filter_form'];
         $types = Type::all();
-        if ($filter != 'null') {
-
+        if ($filter) {
             $projects = Project::where('type_id', '=', $data['filter_form'])->get();
+            return view('admin.projects.indexFiltering', compact('projects','types'));
         }else {
-            $projects = Project::all();
-
+            return redirect()->route('admin.projects.index');
         }
 
-        return view('admin.projects.indexFiltering', compact('projects','types'));
     }
 
     /**
