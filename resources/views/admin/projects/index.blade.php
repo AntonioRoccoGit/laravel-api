@@ -2,17 +2,17 @@
 @section('content')
     @include('partials.session-message')
     <div class="container mt-4">
-        <form class="mb-4 d-flex" action="{{route('admin.projects.filter')}}" method="POST">
+        <form class="mb-4 d-flex align-items-center" action="{{route('admin.projects.filter')}}" method="POST">
             @csrf
             @method('GET')
-            <select class="form-select" name="filter_form" id="filter_form">
-                <option value="">Scegli una tipologia</option>
+                <select class="form-select w-25" name="filter_form" id="filter_form">
+                    <option value="">Nessun filtro...</option>
 
-                @foreach ($types as $type)
-                <option value="{{$type->id}}">{{$type->title}}</option>
-                    
-                @endforeach
-            </select>
+                    @foreach ($types as $type)
+                    <option value="{{$type->id}}">{{$type->title}}</option>
+                        
+                    @endforeach
+                </select>
             <button type="submit" class="btn btn-light ms-2">Filtra</button>
         </form>
         @if (count($projects) > 0)
