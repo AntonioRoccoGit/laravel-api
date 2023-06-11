@@ -16,7 +16,7 @@
                 @enderror
             </div>
             <div class="w-100 text-end">
-                <a href="{{ route('admin.projects.index') }}" class="btn btn-warning"><i
+                <a href="{{ url()->previous() }}" class="btn btn-warning"><i
                         class="fa-solid fa-arrow-left"></i></a>
                 <button type="submit" class="btn btn-success"><i class="fa-solid fa-check"></i></button>
             </div>

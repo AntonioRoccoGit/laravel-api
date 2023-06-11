@@ -40,5 +40,4 @@ sessionMsg.forEach(e => {
     setTimeout(()=>{
         e.style.display='none';
     },2000)
-    
 });

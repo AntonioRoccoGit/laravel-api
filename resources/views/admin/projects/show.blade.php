@@ -24,7 +24,7 @@
                 <p class="card-text">{{ $project->description }}</p>
                 <div class="d-flex justify-content-end">
 
-                    <a href="{{ route('admin.projects.index') }}" class="btn btn-warning"><i
+                    <a href="{{ url()->previous() }}" class="btn btn-warning"><i
                             class="fa-solid fa-arrow-left"></i></a>
 
                 </div>
