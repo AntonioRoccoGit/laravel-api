@@ -15,6 +15,7 @@
             </select>
             <button type="submit" class="btn btn-light ms-2">Filtra</button>
         </form>
+        @if (count($projects) > 0)
         <table class="table table-dark align-middle rounded-2">
             <thead>
                 <tr>
@@ -67,7 +68,11 @@
 
             </tbody>
         </table>
+        @else
+            <h3 class="mt-2">Nessun progetto trovato</h3>
+        @endif
         @include('partials.delete_modal')
+       
 
     </div>
 @endsection

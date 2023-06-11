@@ -32,8 +32,8 @@ class ProjectController extends Controller
         $filter = $data['filter_form'];
         $types = Type::all();
         if ($filter) {
-            $projects = Project::where('type_id', '=', $data['filter_form'])->get();
-            return view('admin.projects.indexFiltering', compact('projects','types'));
+            $projects = Project::where('type_id', '=', $filter)->get();
+            return view('admin.projects.index', compact('projects','types'));
         }else {
             return redirect()->route('admin.projects.index');
         }
