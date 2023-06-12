@@ -31,9 +31,9 @@ if (btns.length > 0) {
         })
     });
 }
-//end handle delete form with confirm modalù
+//end handle delete form with confirm modal
 
-
+//hendle session message display none
 const sessionMsg = document.querySelectorAll('.ms_alert_handle');
 console.log(sessionMsg);
 sessionMsg.forEach(e => {
@@ -41,3 +41,4 @@ sessionMsg.forEach(e => {
         e.style.display='none';
     },2000)
 });
+//end hendle session message display none

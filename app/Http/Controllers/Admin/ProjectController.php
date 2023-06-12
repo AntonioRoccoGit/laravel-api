@@ -22,7 +22,7 @@ class ProjectController extends Controller
     public function index()
     {
         $types = Type::all();
-        $projects = Project::all();
+        $projects = Project::paginate(8);
         return view('admin.projects.index', compact('projects','types'));
     }
 
@@ -32,7 +32,7 @@ class ProjectController extends Controller
         $filter = $data['filter_form'];
         $types = Type::all();
         if ($filter) {
-            $projects = Project::where('type_id', '=', $filter)->get();
+            $projects = Project::where('type_id', '=', $filter)->paginate(8);
             return view('admin.projects.index', compact('projects','types'));
         }else {
             return redirect()->route('admin.projects.index');

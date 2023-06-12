@@ -5,6 +5,7 @@
         <form class="mb-4 d-flex align-items-center" action="{{route('admin.projects.filter')}}" method="POST">
             @csrf
             @method('GET')
+            <label for="filter_form" class="text-white me-2">Seleziona una tipologia</label>
                 <select class="form-select w-25" name="filter_form" id="filter_form">
                     <option value="">Nessun filtro...</option>
 
@@ -68,6 +69,9 @@
 
             </tbody>
         </table>
+        <div>
+            {{$projects->links()}}
+        </div>
         @else
             <h3 class="mt-2">Nessun progetto trovato</h3>
         @endif

@@ -10,7 +10,7 @@
                 <input type="text" value="{{ old('title') }}" class="form-control @error('title') is-invalid @enderror"
                     id="title" name="title">
                 @error('title')
-                    <div class="invalid-feedback">
+                    <div class="invalid-feedback text-white">
                         {{ $message }}
                     </div>
                 @enderror
@@ -26,7 +26,7 @@
                    
                 </select>
                 @error('type_id')
-                    <div class="invalid-feedback">
+                    <div class="invalid-feedback text-white">
                         {{ $message }}
                     </div>
                 @enderror
@@ -34,17 +34,15 @@
             <div class="mb-3 border">
                 <div class="container">
                     <h5>Linguaggi</h5>
-                    <div class="mt-2 row row-cols-3">
+                    <div class="mt-2 btn-group" role="group" aria-label="Basic checkbox toggle button group">
                         @foreach ($technologies as $techno)
-                        <div class="col">
-                            <input type="checkbox" @checked(in_array($techno->id, old('technologies', []))) name="technologies[]" id="{{$techno->name}}" value="{{$techno->id}}">
-                            <label for="{{$techno->name}}" class="form-label">{{$techno->name}}</label>
-                        </div>
+                            <input class="btn-check" type="checkbox" @checked(in_array($techno->id, old('technologies', []))) name="technologies[]" id="{{$techno->name}}" value="{{$techno->id}}">
+                            <label for="{{$techno->name}}" class="form-label btn btn-outline-light">{{$techno->name}}</label>
                         @endforeach
                     </div>
                 </div>
                 @error('technologies')
-                    <div class="invalid-feedback">
+                    <div class="invalid-feedback text-white">
                         {{ $message }}
                     </div>
                 @enderror
@@ -53,7 +51,7 @@
                 <label for="description" class="form-label">Descrizione</label>
                 <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description"> {{ old('description') }} </textarea>
                 @error('description')
-                    <div class="invalid-feedback">
+                    <div class="invalid-feedback text-white">
                         {{ $message }}
                     </div>
                 @enderror
@@ -64,7 +62,7 @@
                     class="form-control @error('project_last_updated') is-invalid @enderror" id="project_last_updated"
                     name="project_last_updated">
                 @error('project_last_updated')
-                    <div class="invalid-feedback">
+                    <div class="invalid-feedback text-white">
                         {{ $message }}
                     </div>
                 @enderror
