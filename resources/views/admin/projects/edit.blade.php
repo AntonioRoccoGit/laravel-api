@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container mt-4 w-50 m-auto">
-        <form action="{{ route('admin.projects.update', $project->slug) }}" method="POST">
+        <form action="{{ route('admin.projects.update', $project->slug) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <h4 class="text-center">Modifica repository</h4>
@@ -16,6 +16,10 @@
                     </div>
                 @enderror
             </div>
+            <div class="mb-3">
+                <label class="form-label" for="file_img">Immagine Progetto</label>
+                <input type="file" class="form-control" id="file_img" name="file_img">
+              </div>
             <div class="mb-3">
                 <label for="type_id" class="form-label">Tipologia</label>
                 <select class="form-select @error('type_id') is-invalid @enderror" aria-label="Default select example" name="type_id" id="type_id">

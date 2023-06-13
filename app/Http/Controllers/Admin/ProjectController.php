@@ -10,6 +10,7 @@ use App\Models\Technology;
 use App\Models\Type;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ProjectController extends Controller
@@ -117,12 +118,25 @@ class ProjectController extends Controller
     {
         $data = $request->validated();
         $data['slug'] = Str::slug($data['title'], '-');
-        $project->update($data);
+        $data['thumb'] = null;
+        if($project->thumb) {
+            Storage::delete($project->thumb);
+        }
+
+        // handle project img
+        if ($request->hasFile('file_img')) {
+            
+            $path = Storage::disk('public')->put('project_img', $request->file_img);
+            $data['thumb'] = $path;
+        }
+
+        // handle project technologies
         if ($request->has('technologies')) {
             $project->technologies()->sync($data['technologies']);
         } else {
             $project->technologies()->detach();
         }
+        $project->update($data);
         return redirect()->route('admin.projects.show', compact('project'))->with('message', "'{$project->title}' è stato modificato con successo");
     }
 
@@ -134,7 +148,9 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-
+        if($project->thumb) {
+            Storage::delete($project->thumb);
+        }
         $project->technologies()->detach(); //!!
         $project->delete();
         return redirect()->route('admin.projects.index')->with('message', "{$project->title} è stato eliminato");

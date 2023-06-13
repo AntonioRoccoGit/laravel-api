@@ -35,6 +35,7 @@ class StoreDataRequest extends FormRequest
                 'nullable',
                 'exists:technologies,id'
             ],
+            'file_img' => 'image'
         ];
     }
     public function messages()
@@ -48,8 +49,8 @@ class StoreDataRequest extends FormRequest
             'description.max' => 'Lunghezza massima :max caratteri',
             'sale_date.date' => 'Formato data',
             'type_id.exists' => 'Verifica di aver inserito una categoria esistente',
-            'technologies.exists' => 'Verifica di aver inserito una categoria esistente'
-
+            'technologies.exists' => 'Verifica di aver inserito una categoria esistente',
+            'file_img.image' => 'Verifica che il file sia un immagine'
         ];
     }
 }
