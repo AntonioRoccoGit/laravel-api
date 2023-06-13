@@ -7,6 +7,12 @@
 
         <div class="card w-50">
             <div class="card-body">
+                @if ($project->thumb)
+                    
+                <img src="{{asset('storage/' . $project->thumb)}}" class="card-img-top mb-2" alt="{{$project->slug}}">
+                @else
+                <h6 class="card-subtitle mb-2 text-body-secondary">Nessun immagine per questo progetto</h6>
+                @endif
                 <h5 class="card-title">{{ $project->title }}</h5>
                 @if ($project->type)
                 <h6 class="card-subtitle mb-2 text-body-secondary">Categoria: {{ $project->type->title }}</h6>
